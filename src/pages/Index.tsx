@@ -146,9 +146,16 @@ const Index = () => {
             </div>
           </div>
         )}
+        <footer className="text-center py-4 text-gray-600 text-sm">
+         Made with ❤️ by <span className="font-semibold text-blue-500">Avinash Samsani</span>
+        </footer>
+
       </div>
     </div>
   );
 };
+<footer className="text-center py-4 text-gray-600 text-sm">
+  Made with ❤️ by <span className="font-semibold text-blue-500">Avinash Samsani</span>
+</footer>
 
 export default Index;
