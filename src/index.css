@@ -40,7 +40,3 @@
   font-family: 'Inter', sans-serif;
 }
 
-::selection {
-  @apply bg-krishna-purple/30;
-}
-

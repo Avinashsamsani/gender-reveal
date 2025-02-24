@@ -1,88 +1,112 @@
-
 import { useState } from 'react';
-import CountdownTimer from '../components/CountdownTimer';
-import { Heart, Star, Sparkles } from 'lucide-react';
+import { Baby, Heart, Star, Sparkles } from 'lucide-react';
 
 const Index = () => {
   const [revealed, setRevealed] = useState(false);
-  const revealDate = new Date('2024-05-01T18:00:00');
+
+  const milestones = [
+    { title: "First Breath", icon: <Baby className="w-8 h-8 text-rose-400 animate-float" /> },
+    { title: "First Cuddle", icon: <Heart className="w-8 h-8 text-pink-400 animate-float" /> },
+    { title: "First Celebration", icon: <Star className="w-8 h-8 text-yellow-400 animate-float" /> },
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#9b87f5] via-[#7E69AB] to-[#6E59A5] relative overflow-hidden">
-      {/* Peacock Feather Pattern Overlay */}
+    <div className="min-h-screen bg-gradient-to-br from-baby-peach via-baby-cream to-baby-mint relative overflow-hidden">
+      {/* Decorative background pattern */}
       <div 
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-5"
         style={{
-          backgroundImage: `radial-gradient(circle at center, #D946EF 2px, transparent 2px), 
-                           radial-gradient(circle at center, #8B5CF6 2px, transparent 2px)`,
-          backgroundSize: '60px 60px, 30px 30px',
-          backgroundPosition: '0 0, 15px 15px'
+          backgroundImage: `radial-gradient(circle at center, #FDE1D3 2px, transparent 2px)`,
+          backgroundSize: '40px 40px',
         }}
       />
       
       <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
         {/* Hero Section */}
-        <div className="text-center mb-16 animate-reveal">
+        <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center space-x-2 mb-4">
-            <Star className="w-5 h-5 text-yellow-300 animate-float" />
-            <span className="font-inter text-sm uppercase tracking-wider text-white/80">Divine Revelation</span>
-            <Star className="w-5 h-5 text-yellow-300 animate-float" />
+            <Baby className="w-6 h-6 text-rose-400 animate-float" />
+            <span className="font-medium text-sm uppercase tracking-wider text-gray-600">Baby's First Steps</span>
+            <Baby className="w-6 h-6 text-rose-400 animate-float" style={{ animationDelay: '0.5s' }} />
           </div>
-          <h1 className="font-cormorant text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-white">
-            Baby Krishna
+          
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-gray-800">
+            Precious
             <br />
-            Gender Reveal
+            Moments
           </h1>
-          <p className="font-inter text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-            Join us in celebrating this divine moment as we discover whether our little Krishna will be a prince or princess
-          </p>
-        </div>
-
-        {/* Countdown Section */}
-        <div className="mb-16 animate-reveal" style={{ animationDelay: '0.2s' }}>
-          <div className="text-center mb-8">
-            <h2 className="font-cormorant text-2xl md:text-3xl font-semibold mb-2 text-white">
-              The Divine Revelation Begins In
-            </h2>
+          
+          <div className="flex justify-center mb-8">
+            <div className="w-20 h-1 bg-gradient-to-r from-baby-rose via-baby-peach to-baby-cream rounded-full" />
           </div>
-          <CountdownTimer targetDate={revealDate} />
         </div>
 
-        {/* Enhanced Reveal Button */}
-        <div className="text-center mb-16 animate-reveal" style={{ animationDelay: '0.4s' }}>
+        {/* Milestones Section */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {milestones.map((milestone, index) => (
+            <div 
+              key={milestone.title}
+              className="group bg-white/30 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/40 transition-all duration-300 transform hover:scale-105"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              <div className="mb-4 flex justify-center">
+                {milestone.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">{milestone.title}</h3>
+              <div className="w-12 h-1 bg-gradient-to-r from-baby-rose to-baby-peach mx-auto rounded-full" />
+            </div>
+          ))}
+        </div>
+
+        {/* Reveal Button Section */}
+        <div className="text-center mb-20">
           <button
             onClick={() => setRevealed(true)}
-            className="group relative inline-flex items-center justify-center px-10 py-5 font-inter font-medium tracking-wide text-white rounded-full overflow-hidden transition-all duration-500 transform hover:scale-105 focus:outline-none"
+            className="group relative inline-flex items-center justify-center px-10 py-5 text-lg font-medium text-white rounded-full overflow-hidden transition-all duration-500 transform hover:scale-105 focus:outline-none bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 hover:from-blue-500 hover:via-purple-500 hover:to-pink-500 shadow-lg"
           >
-            {/* Animated gradient background */}
-            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#D946EF] via-[#8B5CF6] to-[#D946EF] background-animate"></span>
-            
-            {/* Peacock feather pattern overlay */}
-            <span className="absolute inset-0 w-full h-full opacity-20"
-                  style={{
-                    backgroundImage: `radial-gradient(circle at center, white 1px, transparent 1px)`,
-                    backgroundSize: '10px 10px'
-                  }}></span>
-            
-            {/* Button content */}
-            <span className="relative flex items-center text-lg">
-              <Heart className="w-6 h-6 mr-3 animate-float" />
-              Reveal the Divine Secret
-              <Sparkles className="w-6 h-6 ml-3" />
+            <span className="relative flex items-center space-x-2">
+              <Heart className="w-6 h-6 animate-float" />
+              <span>Meet Our Little Angel</span>
+              <Sparkles className="w-6 h-6 animate-float" style={{ animationDelay: '0.2s' }} />
             </span>
           </button>
         </div>
 
-        {/* Enhanced Gender Reveal Modal */}
-        {revealed && (
+        {/* Details Section
+        <div className="max-w-4xl mx-auto bg-white/30 backdrop-blur-sm rounded-2xl p-8 md:p-12">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-baby-peach to-baby-cream flex items-center justify-center">
+                <Star className="w-16 h-16 text-yellow-400 animate-float opacity-50" />
+              </div>
+            </div>
+            
+            <div className="space-y-6 text-center md:text-left">
+              <div className="flex flex-col gap-3">
+                <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">Parents</span>
+                <h3 className="text-2xl font-semibold text-gray-800">Mouni & Family</h3>
+              </div>
+              
+              <div className="flex justify-center md:justify-start space-x-4">
+                <Star className="w-6 h-6 text-yellow-400 animate-float" />
+                <Heart className="w-6 h-6 text-rose-400 animate-float" style={{ animationDelay: '0.2s' }} />
+                <Sparkles className="w-6 h-6 text-blue-400 animate-float" style={{ animationDelay: '0.4s' }} />
+              </div>
+            </div>
+          </div>
+        </div> */}
+
+ {/* Enhanced Gender Reveal Modal */}
+ {revealed && (
           <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
-            <div className="bg-gradient-to-br from-[#FFD700] to-[#FFA500] rounded-2xl p-8 md:p-12 text-center max-w-3xl mx-4 animate-reveal shadow-[0_0_100px_rgba(255,215,0,0.3)]">
+            <div className="bg-gradient-to-br from-[#A7D3C4] to-[#96C8DA] rounded-2xl p-8 md:p-12 text-center max-w-3xl mx-4 animate-reveal shadow-[0_0_100px_rgba(255,215,0,0.3)]">
               {/* Lighting Effects */}
               <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute inset-0 animate-pulse opacity-30"
                      style={{
-                       backgroundImage: `radial-gradient(circle at 30% 30%, #FFD700 0%, transparent 50%),
-                                      radial-gradient(circle at 70% 70%, #FFA500 0%, transparent 50%)`,
+                      backgroundImage: `radial-gradient(circle at 30% 30%, #D6E6F2 0%, transparent 50%),
+                      radial-gradient(circle at 70% 70%, #AFCBEB 0%, transparent 50%)`,
+    
                      }}></div>
               </div>
               
@@ -90,7 +114,7 @@ const Index = () => {
               <div className="relative z-10">
                 <div className="flex justify-center mb-8">
                   <img
-                    src="/lovable-uploads/6402d869-30b1-4fc6-9fa1-0eee3588cbdf.png"
+                    src="/baby krishna.jpeg"
                     alt="Baby Krishna"
                     className="w-64 h-64 object-contain animate-float rounded-full shadow-[0_0_30px_rgba(255,215,0,0.3)]"
                   />
@@ -98,7 +122,7 @@ const Index = () => {
                 
                 <div className="space-y-4">
                   <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
-                    It's a Baby Boy!
+                    It's a Baby Boy!❤️
                   </h2>
                   <p className="font-inter text-xl text-white/90 mb-6">
                     A divine prince is blessing our family!

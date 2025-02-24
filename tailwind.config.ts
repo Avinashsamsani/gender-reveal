@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -25,13 +24,6 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        krishna: {
-          yellow: "#FEF7CD",
-          purple: "#D6BCFA",
-          pink: "#FFDEE2",
-          green: "#F2FCE2",
-          gray: "#F1F0FB",
-        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -60,6 +52,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        baby: {
+          soft: "#FDE1D3",
+          peach: "#FFE6D5",
+          cream: "#FEF7CD",
+          mint: "#F2FCE2",
+          sky: "#D3E4FD",
+          lavender: "#E5DEFF",
+          rose: "#FFDEE2",
+        },
       },
       keyframes: {
         "accordion-down": {
@@ -74,16 +75,16 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
-        reveal: {
-          "0%": { transform: "scale(0.9)", opacity: "0" },
-          "100%": { transform: "scale(1)", opacity: "1" },
+        glow: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.6" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         float: "float 6s ease-in-out infinite",
-        reveal: "reveal 0.7s ease-out forwards",
+        glow: "glow 3s ease-in-out infinite",
       },
     },
   },
